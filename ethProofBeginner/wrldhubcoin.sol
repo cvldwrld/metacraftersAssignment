@@ -30,6 +30,10 @@ contract wrldhubcoin {
 
 
     // mint function
+    //
+    // takes two inputs
+    // an address to be minted to
+    // and the amount to be minted
 
     function mint(address _address, uint _amount)  public {
 
@@ -42,7 +46,11 @@ contract wrldhubcoin {
 
 
     // burn function
-
+    //
+    // takes two inputs
+    // an address tokens will be removed from
+    // and the amount to be destroyed
+    
     function burn(address _address, uint _amount)  public {
 
         //first you check the balance of  the address (there must be at least the number of tokens to be burnt)
