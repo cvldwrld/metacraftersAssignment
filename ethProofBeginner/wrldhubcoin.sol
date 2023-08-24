@@ -21,6 +21,7 @@ contract wrldhubcoin {
 
     string public tokenName = "wrldhubcoin";
     string public tokenAbbrv = "WHC";
+    
     uint public totalSupply = 0;
 
 

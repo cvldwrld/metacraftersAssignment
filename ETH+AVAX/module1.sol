@@ -1,34 +1,33 @@
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.13;
 
-contract statusChecker {
+contract nameRegister {
 
-    mapping(address => uint16) public status;
-    address public owner;
+    mapping(address => string) private names;
 
-    constructor() {
-        owner = msg.sender;
+    mapping(address => bool) private isUser;
+
+    function changeName(string memory newName) public {
+
+            assert(isUser[msg.sender]);  
+            assert(bytes(newName).length > 0);
+
+            names[msg.sender] = newName;
     }
 
-    modifier onlyOwner() {
-        // assert statement
-        assert(msg.sender == owner);
-        _;
+    function checkName() public view returns (string memory name) {
+
+        require(isUser[msg.sender], "First register your name before you call this function");
+
+        name = names[msg.sender];
     }
 
-    function changeStatus(address _subject,uint16 _status) public onlyOwner() {
+    function registerName(string memory name) public {
 
-        if (_status > 4) {
-            // revert statement
-            revert("There are no ranks above level 4");
-        } else {
-            status[_subject] = _status;
-        }
-    }
+        if (isUser[msg.sender]) {revert("You are already a user, use changeName if you want to change your name"); } 
 
-    function checkStatus(address _subject) public view returns (uint16) {
-        // require statement
-        require (status[msg.sender] > 2, "You don't have enough clearance to check other people's status");
-        return status[_subject];
+        
+        names[msg.sender] = name;
+        isUser[msg.sender] = true;
     }
 }
