@@ -7,6 +7,10 @@ contract nameRegister {
 
     mapping(address => bool) private isUser;
 
+
+
+    // function (shows assert)
+
     function changeName(string memory newName) public {
 
             assert(isUser[msg.sender]);  
@@ -15,6 +19,8 @@ contract nameRegister {
             names[msg.sender] = newName;
     }
 
+
+    // function (shows require)
     function checkName() public view returns (string memory name) {
 
         require(isUser[msg.sender], "First register your name before you call this function");
@@ -22,6 +28,8 @@ contract nameRegister {
         name = names[msg.sender];
     }
 
+
+    // function (shows revert)
     function registerName(string memory name) public {
 
         if (isUser[msg.sender]) {revert("You are already a user, use changeName if you want to change your name"); } 
