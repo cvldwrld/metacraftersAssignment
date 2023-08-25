@@ -38,4 +38,4 @@ Interact with the contract using Ethereum wallets or DApp interfaces. Users can 
 This smart contract is released under the MIT License. You can find the licensing details at the top of the contract code.
 
 ## Author
-cvldwrld with the help of the Metacrafters tutorial
+DANIELLE with the help of the METACRAFTERS tutorial
